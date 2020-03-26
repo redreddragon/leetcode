@@ -1,4 +1,4 @@
-package com.nov.leetcode;
+package com.nov.leetcode.mid;
 
 import java.util.*;
 
@@ -7,7 +7,7 @@ import java.util.*;
  * @date 2020/3/19 21:51
  * @description
  */
-public class PermuteUnique {
+public class PermuteUnique47 {
     public List<List<Integer>> permuteUnique(int[] nums) {
         int len = nums.length;
         List<List<Integer>> res = new ArrayList<>();
@@ -52,7 +52,7 @@ public class PermuteUnique {
     }
 
     public static void main(String[] args) {
-        PermuteUnique solution = new PermuteUnique();
+        PermuteUnique47 solution = new PermuteUnique47();
         int[] nums = {1, 1, 2};
         List<List<Integer>> res = solution.permuteUnique(nums);
         System.out.println(res);

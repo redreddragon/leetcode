@@ -1,11 +1,11 @@
-package com.nov.leetcode;
+package com.nov.leetcode.easy;
 
 /**
  * @author longwenhe
  * @date 2020/3/25 0:51
  * @description
  */
-public class BinarySortMerge {
+public class BinarySortMerge88 {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (m == 0) {
             for (int i = 0; i < n; i++) {
@@ -31,7 +31,7 @@ public class BinarySortMerge {
     }
 
     public static void main(String[] args) {
-        BinarySortMerge solution = new BinarySortMerge();
+        BinarySortMerge88 solution = new BinarySortMerge88();
         int[] nums1 = {0};
         int m = 0;
         int[] nums2 = {1};
