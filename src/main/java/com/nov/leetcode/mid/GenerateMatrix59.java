@@ -1,5 +1,7 @@
 package com.nov.leetcode.mid;
 
+import com.nov.leetcode.common.Direction;
+
 /**
  * @author longwenhe
  * @date 2020/3/26 12:57

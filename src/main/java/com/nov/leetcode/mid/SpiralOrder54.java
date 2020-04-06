@@ -1,5 +1,7 @@
 package com.nov.leetcode.mid;
 
+import com.nov.leetcode.common.Direction;
+
 import java.util.ArrayList;
 import java.util.List;
 

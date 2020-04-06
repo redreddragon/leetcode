@@ -1,4 +1,4 @@
-package com.nov.leetcode.mid;
+package com.nov.leetcode.common;
 
 /**
  * @author longwenhe
