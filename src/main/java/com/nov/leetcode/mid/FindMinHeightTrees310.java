@@ -141,15 +141,64 @@ public class FindMinHeightTrees310 {
         return size - 1 > currentHeight ? -1 : size - 1;
     }
 
+    // BFS使用度优化，最终答案必然只有一个或者两个节点
+    public List<Integer> findMinHeightTrees03(int n, int[][] edges) {
+        List<Integer> result = new ArrayList<>();
+        if (n == 1) {
+            result.add(0);
+            return result;
+        }
+        List<List<Integer>> adList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            adList.add(new ArrayList<>());
+        }
+        int[] degree = new int[n];
+        for (int i = 0; i < edges.length; i++) {
+            degree[edges[i][0]]++;
+            degree[edges[i][1]]++;
+            adList.get(edges[i][0]).add(edges[i][1]);
+            adList.get(edges[i][1]).add(edges[i][0]);
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            if (degree[i] == 1) {
+                queue.add(i);
+            }
+        }
+        boolean[] visited = new boolean[n];
+        int count = n;
+        while (count > 2) {
+            int size = queue.size();
+            count -= size;
+            for (int i = 0; i < size; i++) {
+                Integer v = queue.poll();
+                visited[v] = true;
+                for (Integer node : adList.get(v)) {
+                    if (!visited[node]) {
+                        degree[node]--;
+                        if (degree[node] == 1) {
+                            queue.add(node);
+                        }
+                    }
+                }
+            }
+        }
+        while (!queue.isEmpty()) {
+            result.add(queue.poll());
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
 //        int[][] edges = {{1, 0}, {1, 2}, {1, 3}};
 //        int n = 4;
 //        int[][] edges = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
 //        int n = 6;
-        int[][] edges = {{0,1},{0,2},{0,3},{3,4}};
+        int[][] edges = {{0, 1}, {0, 2}, {0, 3}, {3, 4}};
         int n = 5;
         FindMinHeightTrees310 solution = new FindMinHeightTrees310();
         System.out.println(solution.findMinHeightTrees(n, edges));
         System.out.println(solution.findMinHeightTrees02(n, edges));
+        System.out.println(solution.findMinHeightTrees03(n, edges));
     }
 }
